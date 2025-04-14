@@ -8,6 +8,7 @@ data class Album(
     @SerializedName("cover") val cover: String,
 
     @SerializedName("performers") val performers: List<Performer>?,
+    @SerializedName("tracks") val tracks: List<Track>?,
 
     @SerializedName("releaseDate") val releaseDate: String?,
     @SerializedName("description") val description: String?,

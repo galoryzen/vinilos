@@ -16,6 +16,7 @@ retrofit = "2.11.0"
 gson = "2.11.0"
 kotlinxCoroutines = "1.8.1"
 glide = "4.16.0"
+navigationSafeargs = "2.6.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -37,4 +38,4 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+androidx-navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigationSafeargs" }

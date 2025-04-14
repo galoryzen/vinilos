@@ -23,4 +23,20 @@ class AlbumRepository {
             return null
         }
     }
+
+    suspend fun getAlbumDetail(albumId: Int): Album? {
+        try {
+            val response = apiService.getAlbumDetail(albumId)
+            if (response.isSuccessful) {
+                Log.d("AlbumRepository", "Detail Data received: ${response.body()}")
+                return response.body()
+            } else {
+                Log.e("AlbumRepository", "Detail API Error: ${response.errorBody()?.string()}")
+                return null
+            }
+        } catch (e: Exception) {
+            Log.e("AlbumRepository", "Detail Network Exception: ${e.message}", e)
+            return null
+        }
+    }
 }

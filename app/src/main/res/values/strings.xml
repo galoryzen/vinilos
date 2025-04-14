@@ -3,4 +3,9 @@
     <string name="title_home">Coleccionistas</string>
     <string name="title_dashboard">Albums</string>
     <string name="title_notifications">Artistas</string>
+    <string name="album_cover_description">Portada del álbum</string>
+    <string name="unknown_artist">Artista desconocido</string>
+    <string name="unknown_album">Álbum desconocido</string>
+    <string name="no_albums_found">No se encontraron álbumes</string>
+    <string name="tracks_title">Canciones</string>
 </resources>
