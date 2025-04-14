@@ -1,6 +1,7 @@
 package com.example.vinilos
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -31,5 +32,10 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            Log.d("NavDebug", "Destination Changed: ID=${destination.id}, Label=${destination.label}, Nav Name=${resources.getResourceEntryName(destination.id)}")
+            Log.d("NavDebug", "BottomNav Selected ID: ${navView.selectedItemId}, Expected ID: ${R.id.navigation_album}")
+        }
     }
 }

@@ -25,12 +25,16 @@ class AlbumDetailFragment : Fragment() {
     private val args: AlbumDetailFragmentArgs by navArgs()
     private lateinit var trackAdapter: TrackAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAlbumDetailBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this).get(AlbumDetailViewModel::class.java)
         trackAdapter = TrackAdapter()
 
         return binding.root
@@ -39,6 +43,8 @@ class AlbumDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("AlbumDetailFragment", "onViewCreated for album ID: ${args.albumIdArg}")
+
+        viewModel = ViewModelProvider(this).get(AlbumDetailViewModel::class.java)
 
         setupTrackRecyclerView()
         observeViewModel()
@@ -70,6 +76,7 @@ class AlbumDetailFragment : Fragment() {
 
                 if (it.tracks.isNullOrEmpty()){
                     Log.d("AlbumDetailFragment", "Tracks are null or empty")
+                    trackAdapter.submitList(emptyList())
                 } else {
                     Log.d("AlbumDetailFragment", "Submitting ${it.tracks.size} tracks to adapter")
                     trackAdapter.submitList(it.tracks)
@@ -81,12 +88,26 @@ class AlbumDetailFragment : Fragment() {
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             Log.d("AlbumDetailFragment", "isLoading changed: $isLoading")
             binding.detailLoadingSpinner.visibility = if (isLoading) View.VISIBLE else View.GONE
+            binding.contentScrollView.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
         }
 
         viewModel.error.observe(viewLifecycleOwner) { error ->
             Log.d("AlbumDetailFragment", "Error observed: $error")
             binding.detailErrorText.visibility = if (error != null) View.VISIBLE else View.GONE
             binding.detailErrorText.text = error
+            if (error != null) {
+                binding.contentScrollView.visibility = View.GONE
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().navigateUp()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
