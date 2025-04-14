@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.vinilos.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_album"
+        android:name="com.example.vinilos.ui.album.AlbumFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_album" />
 
     <fragment
         android:id="@+id/navigation_notifications"
