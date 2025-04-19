@@ -19,6 +19,7 @@ class AlbumTest {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
     private val firstAlbumName = "Buscando América"
+    private val waitToLoadTime: Long = 1500L
 
     @Test
     fun listAlbums() {
@@ -26,7 +27,7 @@ class AlbumTest {
         val albumNavigationButton = onView(withId(R.id.navigation_album))
         albumNavigationButton.perform(click())
 
-        Thread.sleep(1500)
+        Thread.sleep(waitToLoadTime)
 
         val albumView = onView(withId(R.id.albums_recycler_view))
 
@@ -43,7 +44,7 @@ class AlbumTest {
         val albumNavigationButton = onView(withId(R.id.navigation_album))
         albumNavigationButton.perform(click())
 
-        Thread.sleep(1500)
+        Thread.sleep(waitToLoadTime)
 
         val albumView = onView(withId(R.id.albums_recycler_view))
 
@@ -58,7 +59,7 @@ class AlbumTest {
             click()
         )
 
-        Thread.sleep(1000) // Esperar que cargue la vista de detalle
+        Thread.sleep(waitToLoadTime) // Esperar que cargue la vista de detalle
 
         // Verificar que la vista de detalle muestre el nombre del álbum
         onView(withId(R.id.detail_album_title))
