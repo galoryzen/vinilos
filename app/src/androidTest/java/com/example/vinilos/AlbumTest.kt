@@ -14,10 +14,11 @@ import org.hamcrest.Matchers.allOf
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class AlbumListTest {
+class AlbumTest {
 
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
+    private val firstAlbumName = "Buscando América"
 
     @Test
     fun listAlbums() {
@@ -53,7 +54,7 @@ class AlbumListTest {
         albumView.check(matches(hasDescendant(withId(R.id.album_cover_image))))
 
         // Multiples albumes son cargados (por ende, comparten ID), obten todos y usa el primero
-        onView(allOf(withId(R.id.album_name_text), withText("Buscando América"))).perform(
+        onView(allOf(withId(R.id.album_name_text), withText(firstAlbumName))).perform(
             click()
         )
 
@@ -61,7 +62,7 @@ class AlbumListTest {
 
         // Verificar que la vista de detalle muestre el nombre del álbum
         onView(withId(R.id.detail_album_title))
-            .check(matches(withText("Buscando América")))
+            .check(matches(withText(firstAlbumName)))
 
         // Verificar que la descripcion y el cover estan visibiles
         onView(withId(R.id.detail_album_description)).check(matches(isDisplayed()))
