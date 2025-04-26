@@ -18,17 +18,33 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = rootProject.file("my-release-key.keystore")
+            storePassword = "686007541isaac"
+            keyAlias = "my-key-alias"
+            keyPassword = "686007541isaac"
+        }
+    }
+
+
     buildTypes {
         getByName("debug") {
             buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:3000/\"")
         }
         getByName("release") {
+            signingConfig = signingConfigs["release"]
             isMinifyEnabled = false
             buildConfigField("String", "BASE_URL", "\"http://174.138.93.60:3000/\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        create("localProd") {
+            initWith(getByName("debug"))
+            buildConfigField("String", "BASE_URL", "\"http://174.138.93.60:3000/\"")
+            matchingFallbacks += listOf("debug")
         }
     }
     compileOptions {
