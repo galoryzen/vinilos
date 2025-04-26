@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.album // Ajusta el nombre del paquete
+package com.example.vinilos.ui.album
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
