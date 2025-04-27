@@ -1,0 +1,43 @@
+package com.example.vinilos
+
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.assertion.ViewAssertions.*
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.LargeTest
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.hamcrest.Matchers.allOf
+
+@RunWith(AndroidJUnit4::class)
+@LargeTest
+class ArtistTest {
+
+    @get:Rule
+    val activityRule = ActivityScenarioRule(MainActivity::class.java)
+    private val firstArtistName = "Queen"
+    private val waitToLoadTime: Long = 1500L
+
+    @Test
+    fun listArtists() {
+
+        // Arrange
+        val artistNavigationButton = onView(withId(R.id.navigation_artist))
+
+        // Action
+        artistNavigationButton.perform(click())
+        Thread.sleep(waitToLoadTime)
+        val artistView = onView(withId(R.id.artists_recycler_view))
+
+        // Assert
+        artistView.check(matches(isDisplayed()))
+        artistView.check(matches(hasDescendant(withId(R.id.artist_cover_image))))
+        artistView.check(matches(hasDescendant(allOf(
+            withId(R.id.artist_name_text),
+            withText(firstArtistName)
+        ))))
+    }
+}
