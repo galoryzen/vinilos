@@ -56,9 +56,11 @@ Para ejecutar la aplicación se tienen 3 opciones:
 
 ### 4. Ejecución en dispositivo Android por APK directamente
 
-1. Descargar el APK proporcionado en el repositorio
+1. Descargar el APK proporcionado [en el repositorio](https://github.com/galoryzen/vinilos/wiki/APK_sprint1)
 2. Verificar que el dispositivo esté configurado para instalar APK de terceros
 3. Instalar el APK en el dispositivo
 4. Ejecutar la aplicación
 
+> [!NOTE]
+> Hemos proporcionado un tutorial en la wiki, puede accederlo haciendo [click aqui](https://drive.google.com/file/d/1xQoDzu8yZWbsRPfAbw4VR0yKF8Z4xUOV/view?usp=sharing)
 
