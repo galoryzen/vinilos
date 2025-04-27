@@ -24,7 +24,7 @@ Repositorio de la aplicación nativa de Android usando Kotlin para la materia de
 
 ## Ambientes de ejecución
 
-Para ejecutar la aplicación se tienen 3 opciones:
+Para ejecutar la aplicación se tienen 4 opciones:
 
 ### 1. Ejecución en emulador Android (Backend en local)
 
