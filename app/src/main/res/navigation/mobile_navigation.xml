@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_collector">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.vinilos.ui.home.HomeFragment"
+        android:id="@+id/navigation_collector"
+        android:name="com.example.vinilos.ui.collector.CollectorFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_collector" />
 
     <fragment
         android:id="@+id/navigation_album"
