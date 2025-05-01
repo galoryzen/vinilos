@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentCollectorBinding
-// Importa Collector si necesitas el listener
-// import com.example.vinilos.data.model.Collector
 
 class CollectorFragment : Fragment() {
 
