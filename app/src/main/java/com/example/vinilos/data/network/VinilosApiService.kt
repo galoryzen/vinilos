@@ -3,6 +3,7 @@ package com.example.vinilos.data.network
 import com.example.vinilos.data.model.Album
 import com.example.vinilos.data.model.Artist
 import com.example.vinilos.data.model.Collector
+import com.example.vinilos.data.model.CollectedAlbumAuction
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,4 +20,10 @@ interface VinilosApiService {
 
     @GET("collectors")
     suspend fun getCollectors(): Response<List<Collector>>
+
+    @GET("collectors/{id}")
+    suspend fun getCollectorDetail(@Path("id") id: Int): Response<Collector>
+
+    @GET("collectors/{id}/albums")
+    suspend fun getCollectorDetailWithAlbums(@Path("id") id: Int): Response<List<CollectedAlbumAuction>>
 }

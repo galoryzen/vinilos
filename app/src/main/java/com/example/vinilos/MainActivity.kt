@@ -43,6 +43,11 @@ class MainActivity : AppCompatActivity() {
                     binding.navView.visibility = View.GONE
                 }
 
+                R.id.navigation_album_detai,
+                R.id.navigation_collector_detail -> {
+                    binding.navView.visibility = View.GONE
+                }
+
                 else -> {
                     binding.navView.visibility = View.VISIBLE
                 }
