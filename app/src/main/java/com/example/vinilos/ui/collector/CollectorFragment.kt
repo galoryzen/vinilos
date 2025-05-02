@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentCollectorBinding
+import com.example.vinilos.ui.collectordetail.CollectorDetailFragmentDirections
 
 class CollectorFragment : Fragment() {
 
@@ -43,8 +45,10 @@ class CollectorFragment : Fragment() {
         collectorAdapter = CollectorAdapter { collector ->
             Log.d("CollectorFragment", "Collector clicked: ID=${collector.id}, Name=${collector.name}")
 
-            // TODO: Aqui va el código para navegar a la vista de detalle de coleccionista
-            Toast.makeText(context, "Clicked: ${collector.name}", Toast.LENGTH_SHORT).show()
+            val action = CollectorFragmentDirections.actiionListToDetail(
+                collectorIdArg = collector.id
+            )
+            findNavController().navigate(action)
         }
 
         binding.collectorsRecyclerView.apply {

@@ -5,9 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.vinilos.R
 import com.example.vinilos.data.model.Collector
 import com.example.vinilos.databinding.CollectorListItemBinding
+import java.net.URLEncoder
 
 class CollectorAdapter(private val onItemClicked: (Collector) -> Unit) :
     ListAdapter<Collector, CollectorAdapter.CollectorViewHolder>(CollectorDiffCallback()) {
@@ -28,6 +31,15 @@ class CollectorAdapter(private val onItemClicked: (Collector) -> Unit) :
         fun bind(collector: Collector) {
             binding.collectorNameText.text = collector.name
             binding.collectorInfoText.text = collector.email ?: itemView.context.getString(R.string.no_email_provided)
+
+            val encodedName = URLEncoder.encode(collector.name, "UTF-8")
+            val avatarUrl = "https://api.dicebear.com/9.x/miniavs/png?seed=$encodedName"
+
+            Glide.with(binding.root.context)
+                .load(avatarUrl)
+                .error(R.drawable.artist_24px)
+                .transform(CircleCrop())
+                .into(binding.collectorIcon)
 
             itemView.setOnClickListener {
                 onItemClicked(collector)
