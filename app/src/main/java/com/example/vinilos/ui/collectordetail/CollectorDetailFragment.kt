@@ -17,6 +17,7 @@ import com.example.vinilos.databinding.FragmentCollectorDetailBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import java.net.URLEncoder
+import androidx.recyclerview.widget.DividerItemDecoration
 
 class CollectorDetailFragment : Fragment() {
 
@@ -74,6 +75,9 @@ class CollectorDetailFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = commentAdapter
             isNestedScrollingEnabled = false
+
+            val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+            addItemDecoration(divider)
         }
     }
 
