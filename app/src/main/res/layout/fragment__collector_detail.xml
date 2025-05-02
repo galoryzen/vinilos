@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12sp"
                 android:text="@string/collector_favorite_albums"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:text="Albums favoritos"
@@ -69,9 +70,30 @@
                 android:id="@+id/detail_collector_albums_recycled_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4sp"
                 android:nestedScrollingEnabled="false"
                 tools:itemCount="3"
-                tools:listitem="@layout/album_list_item" />
+                tools:listitem="@layout/album_list_item">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/detail_collector_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/collector_comments"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_collection_comments_recycled_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                tools:itemCount="3"
+                tools:listitem="@layout/collector_comment_list_item" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

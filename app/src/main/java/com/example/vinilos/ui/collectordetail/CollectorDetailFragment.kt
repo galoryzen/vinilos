@@ -26,6 +26,7 @@ class CollectorDetailFragment : Fragment() {
     private lateinit var viewModel: CollectorDetailViewModel
     private val args: CollectorDetailFragmentArgs by navArgs()
     private lateinit var collectorAlbumAdapter: CollectorAlbumAdapter
+    private lateinit var commentAdapter: CommentAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +46,9 @@ class CollectorDetailFragment : Fragment() {
         Log.d("CollectorDetailFragment", "onViewCreated for collector ID: ${args.collectorIdArg}")
 
         viewModel = ViewModelProvider(this).get(CollectorDetailViewModel::class.java)
-
+        commentAdapter = CommentAdapter()
         setupAlbumCollectorRecyclerView()
+        setupCommentCollectorRecycledView()
         observeViewModel()
     }
 
@@ -63,6 +65,14 @@ class CollectorDetailFragment : Fragment() {
         binding.detailCollectorAlbumsRecycledView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = collectorAlbumAdapter
+            isNestedScrollingEnabled = false
+        }
+    }
+
+    private fun setupCommentCollectorRecycledView(){
+        binding.detailCollectionCommentsRecycledView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = commentAdapter
             isNestedScrollingEnabled = false
         }
     }
@@ -84,6 +94,13 @@ class CollectorDetailFragment : Fragment() {
                     .transform(CircleCrop())
                     .into(binding.detailCollectorCover)
 
+                if (collector.comments.isNullOrEmpty()){
+                    Log.d("CollectorDetailFragment", "Comments are null or empty")
+                    commentAdapter.submitList(emptyList())
+                } else {
+                    Log.d("CollectorDetailFragment", "Submitting ${collector.comments.size} comments to adapter")
+                    commentAdapter  .submitList(collector.comments)
+                }
 
                 (activity as? AppCompatActivity)?.supportActionBar?.title = it.name
 

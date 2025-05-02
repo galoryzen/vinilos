@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.vinilos.data.model.CollectedAlbumAuction
 import com.example.vinilos.data.model.Collector
 import com.example.vinilos.data.model.AlbumCollector
 import com.example.vinilos.data.repository.CollectorRepository
