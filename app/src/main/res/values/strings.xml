@@ -2,7 +2,6 @@
     <string name="app_name">Vinilos</string>
     <string name="title_home">Coleccionistas</string>
     <string name="title_dashboard">Albums</string>
-    <string name="title_notifications">Artistas</string>
     <string name="title_artists">Artistas</string>
     <string name="album_cover_description">Portada del álbum</string>
     <string name="unknown_artist">Artista desconocido</string>
@@ -11,7 +10,6 @@
     <string name="no_artists_found">No se encontraron artistas</string>
     <string name="artist_cover_description">Portada del artista</string>
     <string name="tracks_title">Canciones</string>
-    <string name="collector_cover_description">Icono de Coleccionista</string>
     <string name="no_collectors_found">No se encontraron coleccionistas</string>
     <string name="no_email_provided">Email no disponible</string>
     <string name="collector_phone">Teléfono: %1$s</string>
