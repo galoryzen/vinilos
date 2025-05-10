@@ -31,7 +31,7 @@
             tools:text="Nombre del Coleccionista" />
 
         <TextView
-            android:id="@+id/collector_info_text"
+            android:id="@+id/collector_email_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceListItemSecondary"

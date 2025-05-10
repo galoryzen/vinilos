@@ -39,11 +39,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("NavDebug", "BottomNav Selected ID: ${navView.selectedItemId}, Expected ID: ${R.id.navigation_album}")
 
             when (destination.id) {
-                R.id.navigation_album_detail -> {
-                    binding.navView.visibility = View.GONE
-                }
-
-                R.id.navigation_album_detai,
+                R.id.navigation_album_detail,
                 R.id.navigation_collector_detail -> {
                     binding.navView.visibility = View.GONE
                 }

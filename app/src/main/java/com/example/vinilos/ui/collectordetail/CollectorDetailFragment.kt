@@ -87,7 +87,7 @@ class CollectorDetailFragment : Fragment() {
                 Log.d("CollectorDetailFragment", "Collector data received: ${it.name}")
                 binding.detailCollectorName.text = it.name
                 binding.detailCollectorPhone.text = binding.root.context.getString(R.string.collector_phone, it.telephone)
-                binding.detailCollectorEmail.text = binding.root.context.getString(R.string.collector_email, it.telephone)
+                binding.detailCollectorEmail.text = binding.root.context.getString(R.string.collector_email, it.email)
 
                 val encodedName = URLEncoder.encode(collector.name, "UTF-8")
                 val avatarUrl = "https://api.dicebear.com/9.x/miniavs/png?seed=$encodedName"

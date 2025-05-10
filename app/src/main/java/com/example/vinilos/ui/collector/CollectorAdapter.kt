@@ -30,7 +30,7 @@ class CollectorAdapter(private val onItemClicked: (Collector) -> Unit) :
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(collector: Collector) {
             binding.collectorNameText.text = collector.name
-            binding.collectorInfoText.text = collector.email ?: itemView.context.getString(R.string.no_email_provided)
+            binding.collectorEmailText.text = collector.email ?: itemView.context.getString(R.string.no_email_provided)
 
             val encodedName = URLEncoder.encode(collector.name, "UTF-8")
             val avatarUrl = "https://api.dicebear.com/9.x/miniavs/png?seed=$encodedName"
