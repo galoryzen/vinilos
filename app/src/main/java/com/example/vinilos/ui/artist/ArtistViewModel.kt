@@ -1,5 +1,6 @@
 package com.example.vinilos.ui.artist
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,6 +26,7 @@ class ArtistViewModel : ViewModel() {
         fetchArtists()
     }
 
+    @SuppressLint("NullSafeMutableLiveData")
     private fun fetchArtists() {
         viewModelScope.launch {
             _isLoading.value = true
