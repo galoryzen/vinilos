@@ -2,6 +2,7 @@ package com.example.vinilos
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -27,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_album, R.id.navigation_artist
+                R.id.navigation_home,
+                R.id.navigation_collector, R.id.navigation_album, R.id.navigation_artist
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -36,6 +38,18 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             Log.d("NavDebug", "Destination Changed: ID=${destination.id}, Label=${destination.label}, Nav Name=${resources.getResourceEntryName(destination.id)}")
             Log.d("NavDebug", "BottomNav Selected ID: ${navView.selectedItemId}, Expected ID: ${R.id.navigation_album}")
+
+            when (destination.id) {
+                R.id.navigation_home,
+                R.id.navigation_album_detail,
+                R.id.navigation_collector_detail -> {
+                    binding.navView.visibility = View.GONE
+                }
+
+                else -> {
+                    binding.navView.visibility = View.VISIBLE
+                }
+            }
         }
     }
 }

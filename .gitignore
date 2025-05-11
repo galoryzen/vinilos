@@ -73,3 +73,6 @@ replay_pid*
 
 # keystore
 *.keystore
+
+
+app/release/

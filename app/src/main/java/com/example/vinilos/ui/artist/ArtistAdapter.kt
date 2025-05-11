@@ -11,10 +11,11 @@ import com.example.vinilos.data.model.Artist
 import com.example.vinilos.databinding.ArtistListItemBinding
 
 class ArtistAdapter(private val onItemClicked: (Artist) -> Unit) :
-    ListAdapter<Artist, ArtistAdapter.ArtistViewHolder>(ArtistDiffCallback()
-) {
+    ListAdapter<Artist, ArtistAdapter.ArtistViewHolder>(ArtistDiffCallback()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistViewHolder {
-        val binding = ArtistListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ArtistListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ArtistViewHolder(binding, onItemClicked)
     }
 
@@ -29,7 +30,8 @@ class ArtistAdapter(private val onItemClicked: (Artist) -> Unit) :
         fun bind(artist: Artist) {
             binding.artistNameText.text = artist.name
 
-            val artistName = artist.performers?.firstOrNull()?.name ?: itemView.context.getString(R.string.unknown_artist)
+            val artistName = artist.albums?.firstOrNull()?.name
+                ?: itemView.context.getString(R.string.unknown_artist)
             binding.artistAlbumText.text = artistName
 
             itemView.setOnClickListener {
