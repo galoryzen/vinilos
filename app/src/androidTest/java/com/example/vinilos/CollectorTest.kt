@@ -27,7 +27,9 @@ class CollectorTest {
 
     @Test
     fun listCollectors() {
-        
+        onView(withId(R.id.button_visitor)).perform(click())
+        Thread.sleep(waitToLoadTime)
+
         // Arrange
         val collectorNavigationButton = onView(withId(R.id.navigation_collector))
 
@@ -44,6 +46,9 @@ class CollectorTest {
 
     @Test
     fun detailCollector() {
+        onView(withId(R.id.button_visitor)).perform(click())
+        Thread.sleep(waitToLoadTime)
+
         // Obtener el boton del menu de navegacion de coleccionistas
         val collectorNavigationButton = onView(withId(R.id.navigation_collector))
 

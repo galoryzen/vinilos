@@ -23,6 +23,9 @@ class AlbumTest {
 
     @Test
     fun listAlbums() {
+        onView(withId(R.id.button_visitor)).perform(click())
+        Thread.sleep(waitToLoadTime)
+
         // Ir al listado de albums
         val albumNavigationButton = onView(withId(R.id.navigation_album))
         albumNavigationButton.perform(click())
@@ -40,6 +43,9 @@ class AlbumTest {
 
     @Test
     fun detailAlbum() {
+        onView(withId(R.id.button_visitor)).perform(click())
+        Thread.sleep(waitToLoadTime)
+
         // Ir al listado de albums
         val albumNavigationButton = onView(withId(R.id.navigation_album))
         albumNavigationButton.perform(click())

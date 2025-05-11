@@ -23,6 +23,8 @@ class ArtistTest {
 
     @Test
     fun listArtists() {
+        onView(withId(R.id.button_visitor)).perform(click())
+        Thread.sleep(waitToLoadTime)
 
         // Arrange
         val artistNavigationButton = onView(withId(R.id.navigation_artist))
@@ -43,6 +45,9 @@ class ArtistTest {
 
     @Test
     fun detailArtist() {
+        onView(withId(R.id.button_visitor)).perform(click())
+        Thread.sleep(waitToLoadTime)
+
         // Ir al listado de artistas
         val artistNavigationButton = onView(withId(R.id.navigation_artist))
         artistNavigationButton.perform(click())
