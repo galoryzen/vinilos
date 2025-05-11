@@ -42,7 +42,7 @@ class ArtistDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("ArtistDetailFragment", "onViewCreated for artist ID: ${args.artistIdArg}")
+//        Log.d("ArtistDetailFragment", "onViewCreated for artist ID: ${args.artistIdArg}")
 
         viewModel = ViewModelProvider(this).get(ArtistDetailViewModel::class.java)
 

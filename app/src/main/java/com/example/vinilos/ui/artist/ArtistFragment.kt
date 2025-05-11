@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vinilos.R
@@ -18,7 +19,7 @@ class ArtistFragment : Fragment() {
     private var _binding: FragmentArtistBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ArtistViewModel by activityViewModels()
+    private lateinit var viewModel: ArtistViewModel
 
     private var artistAdapter: ArtistAdapter? = null
 
@@ -28,6 +29,7 @@ class ArtistFragment : Fragment() {
     ): View {
         Log.d("ArtistFragment", "onCreateView called")
         _binding = FragmentArtistBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this).get(ArtistViewModel::class.java)
         return binding.root
     }
 
@@ -71,7 +73,6 @@ class ArtistFragment : Fragment() {
                 } else {
                     binding.errorText.visibility = View.GONE
                 }
-                Log.d("ArtistFragment", "Artist list received: ${it.map { a -> a.name }}")
                 artistAdapter?.submitList(it)
             }
         }

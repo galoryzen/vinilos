@@ -3,13 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_collector">
+    app:startDestination="@+id/navigation_home">
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.vinilos.ui.home.HomeFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_album"
+            app:destination="@id/navigation_album"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/navigation_home"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_collector"
+            app:destination="@id/navigation_collector"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_collector"
         android:name="com.example.vinilos.ui.collector.CollectorFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_collector" >
+        tools:layout="@layout/fragment_collector">
         <action
             android:id="@+id/actiion_list_to_detail"
             app:destination="@id/navigation_collector_detail"
@@ -35,14 +59,16 @@
 
     <fragment
         android:id="@+id/navigation_album_detail"
-        android:name="com.example.vinilos.ui.albumdetail.AlbumDetailFragment" android:label="{albumNameArg}" tools:layout="@layout/fragment_album_detail">
+        android:name="com.example.vinilos.ui.albumdetail.AlbumDetailFragment"
+        android:label="{albumNameArg}"
+        tools:layout="@layout/fragment_album_detail">
         <argument
             android:name="albumIdArg"
             app:argType="integer" />
         <argument
             android:name="albumNameArg"
-            app:argType="string"
-            android:defaultValue="Detalle Álbum" />
+            android:defaultValue="Detalle Álbum"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -55,25 +81,42 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="artistIdArg"
+                app:argType="integer" />
+            <argument
+                android:name="artistNameArg"
+                android:defaultValue="Detalle Artista"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/navigation_artist_detail"
-        android:name="com.example.vinilos.ui.artistdetail.ArtistDetailFragment" android:label="{artistNameArg}" tools:layout="@layout/fragment_artist_detail">
+        android:name="com.example.vinilos.ui.artistdetail.ArtistDetailFragment"
+        android:label="{artistNameArg}"
+        tools:layout="@layout/fragment_artist_detail">
         <argument
             android:name="artistIdArg"
             app:argType="integer" />
         <argument
             android:name="artistNameArg"
-            app:argType="string"
-            android:defaultValue="Detalle Artista" />
+            android:defaultValue="Detalle Artista"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detail_artist_to_album"
+            app:destination="@id/navigation_album_detail"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_collector_detail"
         android:name="com.example.vinilos.ui.collectordetail.CollectorDetailFragment"
-        android:label="CollectorDetailFragment" >
+        android:label="CollectorDetailFragment">
         <argument
             android:name="collectorIdArg"
             app:argType="integer" />
@@ -85,6 +128,7 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <argument android:name="albumIdArg" />
 
 </navigation>
