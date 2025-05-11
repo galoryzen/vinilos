@@ -16,9 +16,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -35,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:textColor="#6782D3"
-                android:textSize="24sp"
                 android:textStyle="bold"
+                android:textAppearance="?attr/textAppearanceHeadline4"
                 tools:text="NombreColeccionista" />
 
             <TextView
@@ -61,9 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12sp"
                 android:text="@string/collector_favorite_albums"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textAppearance="?attr/textAppearanceHeadline5"
                 tools:text="Albums favoritos"
                 tools:visibility="visible" />
 
@@ -83,9 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/collector_comments"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textAppearance="?attr/textAppearanceHeadline5" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detail_collection_comments_recycled_view"
