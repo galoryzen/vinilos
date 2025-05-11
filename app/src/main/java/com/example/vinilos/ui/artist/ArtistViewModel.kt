@@ -12,8 +12,8 @@ class ArtistViewModel : ViewModel() {
 
     private val repository = ArtistRepository()
 
-    private val _artists = MutableLiveData<List<Artist>?>()
-    val artists: MutableLiveData<List<Artist>?> = _artists
+    private val _artists = MutableLiveData<List<Artist>>()
+    val artists: LiveData<List<Artist>> = _artists
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -22,9 +22,7 @@ class ArtistViewModel : ViewModel() {
     val error: LiveData<String?> = _error
 
     init {
-        if (_artists.value.isNullOrEmpty()) {
-            fetchArtists()
-        }
+        fetchArtists()
     }
 
     private fun fetchArtists() {

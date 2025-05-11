@@ -10,7 +10,7 @@
     <string name="no_artists_found">No se encontraron artistas</string>
     <string name="artist_cover_description">Portada del artista</string>
     <string name="title_albums">Albums</string>
-        <string name="title_musicos">Musicos</string>
+    <string name="title_musicos">Musicos</string>
     <string name="tracks_title">Canciones</string>
     <string name="no_collectors_found">No se encontraron coleccionistas</string>
     <string name="no_email_provided">Email no disponible</string>
@@ -18,4 +18,8 @@
     <string name="collector_email">Email: %1$s</string>
     <string name="collector_favorite_albums">Albums favoritos</string>
     <string name="collector_comments">Comentarios</string>
+    <string name="welcome_title">¡Bienvenido a Vinilos!</string>
+    <string name="welcome_subtitle">Explora nuestra colección de música</string>
+    <string name="button_visitor">Ingresar como Visitante</string>
+    <string name="button_collector">Ingresar como Coleccionista</string>
 </resources>

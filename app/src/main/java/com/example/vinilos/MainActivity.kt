@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
+                R.id.navigation_home,
                 R.id.navigation_collector, R.id.navigation_album, R.id.navigation_artist
             )
         )
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("NavDebug", "BottomNav Selected ID: ${navView.selectedItemId}, Expected ID: ${R.id.navigation_album}")
 
             when (destination.id) {
+                R.id.navigation_home,
                 R.id.navigation_album_detail,
                 R.id.navigation_collector_detail -> {
                     binding.navView.visibility = View.GONE

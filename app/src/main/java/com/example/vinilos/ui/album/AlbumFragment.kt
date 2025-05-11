@@ -20,6 +20,7 @@ class AlbumFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: AlbumViewModel
+
     private var albumAdapter: AlbumAdapter? = null
 
     override fun onCreateView(
@@ -54,7 +55,7 @@ class AlbumFragment : Fragment() {
         binding.albumsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = albumAdapter
-             setHasFixedSize(true)
+            setHasFixedSize(true)
         }
         Log.d("AlbumFragment", "RecyclerView setup finished")
     }
@@ -67,8 +68,8 @@ class AlbumFragment : Fragment() {
             albums?.let {
                 if (it.isEmpty()) {
                     Log.d("AlbumFragment", "Album list is empty.")
-                     binding.errorText.text = getString(R.string.no_albums_found)
-                     binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = getString(R.string.no_albums_found)
+                    binding.errorText.visibility = View.VISIBLE
                 } else {
                     binding.errorText.visibility = View.GONE
                 }
@@ -88,7 +89,7 @@ class AlbumFragment : Fragment() {
                 binding.errorText.text = errorMessage
                 binding.errorText.visibility = View.VISIBLE
                 binding.albumsRecyclerView.visibility = View.GONE
-                 Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
             } else {
                 binding.errorText.visibility = View.GONE
             }
