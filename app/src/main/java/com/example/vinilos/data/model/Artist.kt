@@ -8,7 +8,7 @@ data class Artist (
     @SerializedName("image") val image: String,
     @SerializedName("description") val description: String?,
     @SerializedName("creationDate") val creationDate: String?,
-    @SerializedName("albums") val performers: List<Album>?,
-    @SerializedName("musicians") val tracks: List<Musician>?,
+    @SerializedName("albums") val albums: List<Album>?,
+    @SerializedName("musicians") val musicians: List<Musician>?,
     @SerializedName("performerPrizes") val performerPrizes: List<PerformerPrizes>?
 )
