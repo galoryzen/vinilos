@@ -51,11 +51,25 @@
         android:label="@string/title_artists">
         <action
             android:id="@+id/action_list_to_detail_artist"
+            app:destination="@id/navigation_artist_detail"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_artist_detail"
+        android:name="com.example.vinilos.ui.artistdetail.ArtistDetailFragment" android:label="{artistNameArg}" tools:layout="@layout/fragment_artist_detail">
+        <argument
+            android:name="artistIdArg"
+            app:argType="integer" />
+        <argument
+            android:name="artistNameArg"
+            app:argType="string"
+            android:defaultValue="Detalle Artista" />
+    </fragment>
+
     <fragment
         android:id="@+id/navigation_collector_detail"
         android:name="com.example.vinilos.ui.collectordetail.CollectorDetailFragment"

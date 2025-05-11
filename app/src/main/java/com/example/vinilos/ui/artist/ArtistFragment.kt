@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentArtistBinding
@@ -42,7 +43,11 @@ class ArtistFragment : Fragment() {
 
         artistAdapter = ArtistAdapter { artist ->
             Log.d("ArtistFragment", "Artist clicked: ID=${artist.id}, Name=${artist.name}")
-            val action = ArtistFragmentDirections.actionListToDetailArtist()
+            val action = ArtistFragmentDirections.actionListToDetailArtist(
+                artistIdArg = artist.id,
+                artistNameArg = artist.name
+            )
+            findNavController().navigate(action)
         }
 
         binding.artistsRecyclerView.apply {

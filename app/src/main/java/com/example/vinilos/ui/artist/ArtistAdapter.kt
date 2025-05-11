@@ -29,7 +29,7 @@ class ArtistAdapter(private val onItemClicked: (Artist) -> Unit) :
         fun bind(artist: Artist) {
             binding.artistNameText.text = artist.name
 
-            val artistName = artist.performers?.firstOrNull()?.name ?: itemView.context.getString(R.string.unknown_artist)
+            val artistName = artist.albums?.firstOrNull()?.name ?: itemView.context.getString(R.string.unknown_artist)
             binding.artistAlbumText.text = artistName
 
             itemView.setOnClickListener {
