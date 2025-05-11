@@ -6,17 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="736dp"
+        android:addStatesFromChildren="false"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="244dp"
+            android:layout_height="242dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/vinilos_logo"
+            android:src="@drawable/vinilos_logo" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="318dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="80dp"
+            android:text="@string/button_visitante" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="317dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/button_coleccionista" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

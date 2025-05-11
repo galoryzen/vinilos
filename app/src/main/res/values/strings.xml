@@ -16,4 +16,7 @@
     <string name="collector_email">Email: %1$s</string>
     <string name="collector_favorite_albums">Albums favoritos</string>
     <string name="collector_comments">Comentarios</string>
+    <string name="button_visitante">INGRESAR CÓMO VISITANTE</string>
+    <string name="button_coleccionista">SOY COLECCIONISTA</string>
+    <string name="vinilos_logo">vinilos_logo</string>
 </resources>
