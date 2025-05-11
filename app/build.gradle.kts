@@ -30,7 +30,7 @@ android {
 
     buildTypes {
         getByName("debug") {
-            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:3000/\"")
+            buildConfigField("String", "BASE_URL", "\"https://backvynils-q6yc.onrender.com/\"")
         }
         getByName("release") {
             signingConfig = signingConfigs["release"]
