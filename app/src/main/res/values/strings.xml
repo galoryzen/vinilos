@@ -9,6 +9,8 @@
     <string name="no_albums_found">No se encontraron álbumes</string>
     <string name="no_artists_found">No se encontraron artistas</string>
     <string name="artist_cover_description">Portada del artista</string>
+    <string name="title_albums">Albums</string>
+        <string name="title_musicos">Musicos</string>
     <string name="tracks_title">Canciones</string>
     <string name="no_collectors_found">No se encontraron coleccionistas</string>
     <string name="no_email_provided">Email no disponible</string>
