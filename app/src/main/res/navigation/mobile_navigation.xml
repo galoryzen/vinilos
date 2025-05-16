@@ -55,6 +55,14 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_navigation_album_to_create_album"
+            app:destination="@id/navigation_album_create"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -130,5 +138,19 @@
     </fragment>
 
     <argument android:name="albumIdArg" />
+
+    <fragment
+        android:id="@+id/navigation_album_create"
+        android:name="com.example.vinilos.ui.albumcreate.AlbumCreateFragment"
+        android:label="@string/title_create_album"
+        tools:layout="@layout/fragment_album_create">
+        <action
+            android:id="@+id/action_create_album_to_list"
+            app:destination="@id/navigation_album"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
 </navigation>
