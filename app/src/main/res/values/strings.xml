@@ -22,4 +22,22 @@
     <string name="welcome_subtitle">Explora nuestra colección de música</string>
     <string name="button_visitor">Ingresar como Visitante</string>
     <string name="button_collector">Ingresar como Coleccionista</string>
+    <string name="button_create_album">Crear Álbum</string>
+    <string name="title_create_album">Crear Nuevo Álbum</string>
+    <string name="hint_album_name">Nombre del Álbum</string>
+    <string name="hint_album_cover_url">URL de la Portada</string>
+    <string name="hint_album_release_date">Fecha de Lanzamiento (YYYY-MM-DD)</string>
+    <string name="hint_album_description">Descripción</string>
+    <string name="label_album_genre">Género</string>
+    <string name="label_album_record_label">Sello Discográfico</string>
+    <string name="button_save_album">Guardar Álbum</string>
+    <string name="album_created_success">Álbum creado exitosamente</string>
+    <string name="album_creation_failed">Error al crear el álbum: %1$s</string>
+    <string name="error_invalid_date_format">Formato de fecha inválido. Use YYYY-MM-DD.</string>
+    <string name="error_album_name_required">El nombre del álbum es requerido.</string>
+    <string name="error_album_cover_required">La URL de la portada es requerida.</string>
+    <string name="error_album_release_date_required">La fecha de lanzamiento es requerida.</string>
+    <string name="error_album_description_required">La descripción es requerida.</string>
+    <string name="error_album_genre_required">El género es requerido.</string>
+    <string name="error_album_record_label_required">El sello discográfico es requerido.</string>
 </resources>

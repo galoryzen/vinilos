@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentAlbumBinding
 import androidx.navigation.fragment.findNavController
+import com.example.vinilos.ui.SharedViewModel
 
 class AlbumFragment : Fragment() {
 
@@ -23,21 +24,49 @@ class AlbumFragment : Fragment() {
 
     private var albumAdapter: AlbumAdapter? = null
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         Log.d("AlbumFragment", "onCreateView called")
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this).get(AlbumViewModel::class.java)
+        viewModel = ViewModelProvider(this)[AlbumViewModel::class.java]
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sharedViewModel.isGuest.observe(viewLifecycleOwner) { isGuest ->
+            Log.d("AlbumFragment", "isGuest observed: $isGuest")
+            if (isGuest) {
+                Log.d("AlbumFragment", "User is a guest, hiding create album button")
+                binding.buttonGoToCreateAlbum.visibility = View.GONE
+            } else {
+                Log.d("AlbumFragment", "User is a collector, showing create album button")
+                binding.buttonGoToCreateAlbum.visibility = View.VISIBLE
+            }
+        }
+
         Log.d("AlbumFragment", "onViewCreated called")
         setupRecyclerView()
         observeViewModel()
+
+        binding.buttonGoToCreateAlbum.setOnClickListener {
+            Log.d("AlbumFragment", "Create Album button clicked")
+            val action = AlbumFragmentDirections.actionNavigationAlbumToCreateAlbum()
+            findNavController().navigate(action)
+        }
+
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("album_created")
+            ?.observe(viewLifecycleOwner) { isAlbumCreated ->
+                if (isAlbumCreated) {
+                    Log.d("AlbumFragment", "Album created, refreshing list")
+                    viewModel.refreshAlbums()
+                    findNavController().currentBackStackEntry?.savedStateHandle?.remove<Boolean>("album_created")
+                }
+            }
     }
 
     private fun setupRecyclerView() {
@@ -46,8 +75,7 @@ class AlbumFragment : Fragment() {
         albumAdapter = AlbumAdapter { album ->
             Log.d("AlbumFragment", "Album clicked: ID=${album.id}, Name=${album.name}")
             val action = AlbumFragmentDirections.actionListToDetail(
-                albumIdArg = album.id,
-                albumNameArg = album.name
+                albumIdArg = album.id, albumNameArg = album.name
             )
             findNavController().navigate(action)
         }

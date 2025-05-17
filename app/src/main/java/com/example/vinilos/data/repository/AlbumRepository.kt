@@ -2,6 +2,7 @@ package com.example.vinilos.data.repository
 
 import android.util.Log
 import com.example.vinilos.data.model.Album
+import com.example.vinilos.data.model.AlbumCreate
 import com.example.vinilos.data.network.RetrofitInstance
 
 class AlbumRepository {
@@ -36,6 +37,22 @@ class AlbumRepository {
             }
         } catch (e: Exception) {
             Log.e("AlbumRepository", "Detail Network Exception: ${e.message}", e)
+            return null
+        }
+    }
+
+    suspend fun createAlbum(album: AlbumCreate): Album? {
+        try {
+            val response = apiService.createAlbum(album)
+            if (response.isSuccessful) {
+                Log.d("AlbumRepository", "Album created: ${response.body()}")
+                return response.body()
+            } else {
+                Log.e("AlbumRepository", "Create API Error: ${response.errorBody()?.string()}")
+                return null
+            }
+        } catch (e: Exception) {
+            Log.e("AlbumRepository", "Create Network Exception: ${e.message}", e)
             return null
         }
     }
