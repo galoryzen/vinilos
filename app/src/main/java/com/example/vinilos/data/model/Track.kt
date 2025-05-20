@@ -7,3 +7,8 @@ data class Track(
     @SerializedName("name") val name: String,
     @SerializedName("duration") val duration: String
 )
+
+data class TrackCreate(
+    @SerializedName("name") val name: String,
+    @SerializedName("duration") val duration: String
+)

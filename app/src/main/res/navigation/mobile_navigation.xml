@@ -77,6 +77,9 @@
             android:name="albumNameArg"
             android:defaultValue="Detalle Álbum"
             app:argType="string" />
+        <action
+            android:id="@+id/navigation_track_create"
+            app:destination="@id/albumTrackSyncFragment" />
     </fragment>
 
     <fragment
@@ -151,6 +154,17 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumTrackSyncFragment"
+        android:name="com.example.vinilos.ui.matchtrackalbum.AlbumTrackSyncFragment"
+        android:label="AlbumTrackSyncFragment" >
+        <argument
+            android:name="albumIdArg"
+            app:argType="integer" />
+        <action
+            android:id="@+id/navigation_track_created_detail"
+            app:destination="@id/navigation_album_detail" />
     </fragment>
 
 </navigation>

@@ -17,7 +17,6 @@ import com.bumptech.glide.Glide
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentAlbumDetailBinding
 import com.example.vinilos.ui.SharedViewModel
-import com.example.vinilos.ui.album.AlbumFragmentDirections
 
 class AlbumDetailFragment : Fragment() {
 
@@ -63,17 +62,17 @@ class AlbumDetailFragment : Fragment() {
         }
 
         binding.buttonGoToMatchTrackAlbum.setOnClickListener {
-            Log.d("AlbumFragment", "Create Album button clicked")
-            val action = AlbumFragmentDirections.actionNavigationAlbumToCreateAlbum()
+            Log.d("AlbumDetailFragment", "Create Album button clicked")
+            val action = AlbumDetailFragmentDirections.navigationTrackCreate(albumIdArg = args.albumIdArg)
             findNavController().navigate(action)
         }
 
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("album_created")
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("track_created")
             ?.observe(viewLifecycleOwner) { isAlbumCreated ->
                 if (isAlbumCreated) {
-                    Log.d("AlbumFragment", "Album created, refreshing list")
-                    viewModel.refreshAlbums()
-                    findNavController().currentBackStackEntry?.savedStateHandle?.remove<Boolean>("album_created")
+                    Log.d("AlbumDetailFragment", "Track created, refreshing item")
+                    viewModel.fetchAlbum()
+                    findNavController().currentBackStackEntry?.savedStateHandle?.remove<Boolean>("track_created")
                 }
             }
 

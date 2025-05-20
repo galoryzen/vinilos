@@ -43,4 +43,6 @@
     <string name="hint_track_name">Nombre de la cancion</string>
     <string name="hint_track_length">Duracion</string>
     <string name="button_save_track">Guardar cancion</string>
+    <string name="track_album_creation_failed">Error al crear la cancion: %1$s</string>
+    <string name="track_album_created_success">Cancion creada exitosamente</string>
 </resources>

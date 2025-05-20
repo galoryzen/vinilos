@@ -5,6 +5,8 @@ import com.example.vinilos.data.model.AlbumCreate
 import com.example.vinilos.data.model.Artist
 import com.example.vinilos.data.model.Collector
 import com.example.vinilos.data.model.CollectedAlbumAuction
+import com.example.vinilos.data.model.Track
+import com.example.vinilos.data.model.TrackCreate
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -20,6 +22,9 @@ interface VinilosApiService {
 
     @POST("albums")
     suspend fun createAlbum(@Body album: AlbumCreate): Response<Album>
+
+    @POST("albums/{id}/tracks")
+    suspend fun createTrack(@Path("id") albumID: Int, @Body track: TrackCreate): Response<Track>
 
     @GET("bands")
     suspend fun getArtists(): Response<List<Artist>>
