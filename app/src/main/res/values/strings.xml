@@ -40,4 +40,7 @@
     <string name="error_album_description_required">La descripción es requerida.</string>
     <string name="error_album_genre_required">El género es requerido.</string>
     <string name="error_album_record_label_required">El sello discográfico es requerido.</string>
+    <string name="hint_track_name">Nombre de la cancion</string>
+    <string name="hint_track_length">Duracion</string>
+    <string name="button_save_track">Guardar cancion</string>
 </resources>

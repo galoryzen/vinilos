@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="@string/hint_album_cover_url">
+            android:hint="@string/hint_track_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_track_name"
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="@string/hint_album_release_date">
+            android:hint="@string/hint_track_length">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_track_length"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="false"
-                android:inputType="date" />
+                android:inputType="text|textNoSuggestions" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:minHeight="48dp"
-            android:text="@string/button_save_album" />
+            android:text="@string/button_save_track" />
 
         <ProgressBar
             android:id="@+id/create_sync_loading_spinner"
