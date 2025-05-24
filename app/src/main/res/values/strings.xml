@@ -45,4 +45,6 @@
     <string name="button_save_track">Guardar cancion</string>
     <string name="track_album_creation_failed">Error al crear la cancion: %1$s</string>
     <string name="track_album_created_success">Cancion creada exitosamente</string>
+    <string name="add_track_to_album">Agregar cancion al álbum</string>
+    <string name="add_album">Agregar álbum</string>
 </resources>

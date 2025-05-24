@@ -27,11 +27,11 @@ class AlbumTrackSyncViewModel(application: Application) : AndroidViewModel(appli
     ) {
         // Basic Validation
         if (trackName.isBlank()) {
-            _error.value = "La URL de la portada es requerida."
+            _error.value = "El nombre de la cancion es requerido."
             return
         }
         if (duration.isBlank()) {
-            _error.value = "La fecha de lanzamiento es requerida."
+            _error.value = "La duración es requerida."
             return
         }
 
