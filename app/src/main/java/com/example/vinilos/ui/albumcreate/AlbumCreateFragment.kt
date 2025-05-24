@@ -106,6 +106,8 @@ class AlbumCreateFragment : Fragment() {
                 },
                 year, month, day
             )
+            // Preventing future dates
+            datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
             datePickerDialog.show()
         }
     }
