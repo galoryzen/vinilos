@@ -52,7 +52,7 @@ class AlbumCreateFragment : Fragment() {
 
         binding.buttonSaveAlbum.setOnClickListener {
             val name = binding.etAlbumName.text.toString()
-            val cover = binding.etAlbumCover.text.toString()
+            val cover = binding.etAlbumCover.text.toString().replace("\\s".toRegex(), "")
             val releaseDate = binding.etAlbumReleaseDate.text.toString()
             val description = binding.etAlbumDescription.text.toString()
             val genre = binding.spinnerAlbumGenre.selectedItem as Genre
