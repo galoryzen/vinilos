@@ -25,7 +25,7 @@ class AlbumCreateViewModel(application: Application) : AndroidViewModel(applicat
     private val _creationSuccess = MutableLiveData<Boolean>()
     val creationSuccess: LiveData<Boolean> = _creationSuccess
 
-    fun isValidImageUrl(url: String): Boolean {
+    private fun isValidImageUrl(url: String): Boolean {
         val uri = url.toUri()
         val scheme = uri.scheme
         val host = uri.host
@@ -33,7 +33,8 @@ class AlbumCreateViewModel(application: Application) : AndroidViewModel(applicat
 
         val hasValidScheme = scheme == "http" || scheme == "https"
         val hasHost = !host.isNullOrEmpty()
-        val hasImageExtension = path.lowercase().matches(Regex(".*\\.(jpg|jpeg|png|webp|gif|bmp|svg)$"))
+        val hasImageExtension = Regex("\\.(jpg|jpeg|png|webp|gif|bmp|svg)$", RegexOption.IGNORE_CASE)
+            .containsMatchIn(path)
 
         return hasValidScheme && hasHost && hasImageExtension
     }
@@ -72,7 +73,7 @@ class AlbumCreateViewModel(application: Application) : AndroidViewModel(applicat
             return
         }
 
-        if (isValidImageUrl(cover)){
+        if (!isValidImageUrl(cover)){
             _error.value = "El URL ingresado no cumple el formato de una URL."
             return
         }
