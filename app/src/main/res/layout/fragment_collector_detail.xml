@@ -27,6 +27,7 @@
                 android:layout_width="193dp"
                 android:layout_height="200dp"
                 android:layout_marginBottom="16dp"
+                android:contentDescription="@string/description_collector"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
