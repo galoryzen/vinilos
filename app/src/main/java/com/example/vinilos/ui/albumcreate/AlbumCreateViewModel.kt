@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
+import androidx.core.net.toUri
 
 class AlbumCreateViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -23,6 +24,20 @@ class AlbumCreateViewModel(application: Application) : AndroidViewModel(applicat
 
     private val _creationSuccess = MutableLiveData<Boolean>()
     val creationSuccess: LiveData<Boolean> = _creationSuccess
+
+    private fun isValidImageUrl(url: String): Boolean {
+        val uri = url.toUri()
+        val scheme = uri.scheme
+        val host = uri.host
+        val path = uri.path ?: ""
+
+        val hasValidScheme = scheme == "http" || scheme == "https"
+        val hasHost = !host.isNullOrEmpty()
+        val hasImageExtension = Regex("\\.(jpg|jpeg|png|webp|gif|bmp|svg)$", RegexOption.IGNORE_CASE)
+            .containsMatchIn(path)
+
+        return hasValidScheme && hasHost && hasImageExtension
+    }
 
     fun createAlbum(
         name: String,
@@ -55,6 +70,11 @@ class AlbumCreateViewModel(application: Application) : AndroidViewModel(applicat
         }
         if (recordLabel.isBlank()) {
             _error.value = "El sello discográfico es requerido."
+            return
+        }
+
+        if (!isValidImageUrl(cover)){
+            _error.value = "El URL ingresado no cumple el formato de una URL."
             return
         }
 
