@@ -73,7 +73,7 @@ class AlbumTrackSyncFragment : Fragment() {
 
         viewModel.creationSuccess.observe(viewLifecycleOwner) { success ->
             if (success) {
-                Toast.makeText(context, getString(R.string.album_created_success), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.track_album_created_success), Toast.LENGTH_SHORT).show()
 
                 findNavController().previousBackStackEntry?.savedStateHandle?.set("track_created", true)
 
