@@ -62,9 +62,13 @@ class AlbumDetailFragment : Fragment() {
         }
 
         binding.buttonGoToMatchTrackAlbum.setOnClickListener {
-            Log.d("AlbumDetailFragment", "Create Album button clicked")
-            val action = AlbumDetailFragmentDirections.navigationTrackCreate(albumIdArg = args.albumIdArg)
-            findNavController().navigate(action)
+            if (findNavController().currentDestination?.id == R.id.navigation_album_detail) {
+                Log.d("AlbumDetailFragment", "Navigate to Track Create/Match button clicked for album ID: ${args.albumIdArg}")
+                val action = AlbumDetailFragmentDirections.navigationTrackCreate(albumIdArg = args.albumIdArg)
+                findNavController().navigate(action)
+            } else {
+                Log.w("AlbumDetailFragment", "Navigation to track create aborted: current destination is not AlbumDetailFragment. Current dest: ${findNavController().currentDestination?.label}")
+            }
         }
 
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("track_created")

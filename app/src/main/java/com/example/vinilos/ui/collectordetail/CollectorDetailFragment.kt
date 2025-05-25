@@ -55,12 +55,16 @@ class CollectorDetailFragment : Fragment() {
 
     private fun setupAlbumCollectorRecyclerView() {
         collectorAlbumAdapter = CollectorAlbumAdapter { album ->
-            Log.d("CollectorDetailFragment", "Album clicked: ID=${album.id}, Name=${album.name}")
-            val action = CollectorDetailFragmentDirections.actionDetailCollectorToAlbum(
-                albumIdArg = album.id,
-                albumNameArg = album.name
-            )
-            findNavController().navigate(action)
+            if (findNavController().currentDestination?.id == R.id.navigation_collector_detail) {
+                Log.d("CollectorDetailFragment", "Album clicked: ID=${album.id}, Name=${album.name}")
+                val action = CollectorDetailFragmentDirections.actionDetailCollectorToAlbum(
+                    albumIdArg = album.id,
+                    albumNameArg = album.name
+                )
+                findNavController().navigate(action)
+            } else {
+                Log.w("CollectorDetailFragment", "Navigation to album detail aborted: current destination is not CollectorDetailFragment. Current dest: ${findNavController().currentDestination?.label}")
+            }
         }
 
         binding.detailCollectorAlbumsRecycledView.apply {

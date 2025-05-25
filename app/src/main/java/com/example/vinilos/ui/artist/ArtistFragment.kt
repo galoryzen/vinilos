@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,12 +43,17 @@ class ArtistFragment : Fragment() {
         Log.d("ArtistFragment", "setupRecyclerView called")
 
         artistAdapter = ArtistAdapter { artist ->
-            Log.d("ArtistFragment", "Artist clicked: ID=${artist.id}, Name=${artist.name}")
-            val action = ArtistFragmentDirections.actionListToDetailArtist(
-                artistIdArg = artist.id,
-                artistNameArg = artist.name
-            )
-            findNavController().navigate(action)
+            // IMPORTANT: Add this check
+            if (findNavController().currentDestination?.id == R.id.navigation_artist) {
+                Log.d("ArtistFragment", "Artist clicked: ID=${artist.id}, Name=${artist.name}")
+                val action = ArtistFragmentDirections.actionListToDetailArtist(
+                    artistIdArg = artist.id,
+                    artistNameArg = artist.name
+                )
+                findNavController().navigate(action)
+            } else {
+                Log.w("ArtistFragment", "Navigation to detail artist aborted: current destination is not ArtistFragment. Current dest: ${findNavController().currentDestination?.label}")
+            }
         }
 
         binding.artistsRecyclerView.apply {
@@ -99,6 +103,9 @@ class ArtistFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         Log.d("ArtistFragment", "onDestroyView called")
+
+        binding.artistsRecyclerView.adapter = null
+        artistAdapter = null
         _binding = null
     }
 }
