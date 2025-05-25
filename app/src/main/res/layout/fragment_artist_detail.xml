@@ -24,9 +24,11 @@
             <ImageView
                 android:id="@+id/detail_artist_cover"
                 android:layout_width="match_parent"
-                android:layout_height="250dp" android:scaleType="centerCrop"
+                android:layout_height="250dp"
                 android:layout_marginBottom="16dp"
                 android:contentDescription="@string/artist_cover_description"
+                android:scaleType="centerCrop"
+                tools:ignore="ImageContrastCheck"
                 tools:src="@mipmap/ic_launcher" />
 
             <TextView
@@ -55,7 +57,7 @@
                 tools:text="Descripción larga del artista que puede ocupar varias líneas..." />
 
             <TextView
-                android:layout_width="89dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/title_albums"
@@ -70,7 +72,7 @@
                 tools:itemCount="3"/>
 
             <TextView
-                android:layout_width="69dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/title_musicos"

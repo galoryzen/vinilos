@@ -22,6 +22,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_track_name"
+                style="@style/CustomTextInputEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textUri" />
@@ -37,6 +38,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_track_length"
+                style="@style/CustomTextInputEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
