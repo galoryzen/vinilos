@@ -21,6 +21,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_album_name"
+                style="@style/CustomTextInputEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords" />
@@ -36,6 +37,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_album_cover"
+                style="@style/CustomTextInputEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textUri" />
@@ -51,6 +53,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_album_release_date"
+                style="@style/CustomTextInputEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -68,6 +71,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_album_description"
+                style="@style/CustomTextInputEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"

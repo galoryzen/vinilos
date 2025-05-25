@@ -11,8 +11,9 @@
         android:id="@+id/album_cover_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:scaleType="centerCrop"
         android:contentDescription="@string/album_cover_description"
+        android:scaleType="centerCrop"
+        tools:ignore="ImageContrastCheck"
         tools:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
