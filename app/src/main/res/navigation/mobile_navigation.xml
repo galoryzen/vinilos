@@ -35,7 +35,7 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_collector">
         <action
-            android:id="@+id/actiion_list_to_detail"
+            android:id="@+id/action_list_to_detail"
             app:destination="@id/navigation_collector_detail"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -55,6 +55,14 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_navigation_album_to_create_album"
+            app:destination="@id/navigation_album_create"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -69,6 +77,9 @@
             android:name="albumNameArg"
             android:defaultValue="Detalle Álbum"
             app:argType="string" />
+        <action
+            android:id="@+id/navigation_track_create"
+            app:destination="@id/albumTrackSyncFragment" />
     </fragment>
 
     <fragment
@@ -130,5 +141,30 @@
     </fragment>
 
     <argument android:name="albumIdArg" />
+
+    <fragment
+        android:id="@+id/navigation_album_create"
+        android:name="com.example.vinilos.ui.albumcreate.AlbumCreateFragment"
+        android:label="@string/title_create_album"
+        tools:layout="@layout/fragment_album_create">
+        <action
+            android:id="@+id/action_create_album_to_list"
+            app:destination="@id/navigation_album"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumTrackSyncFragment"
+        android:name="com.example.vinilos.ui.matchtrackalbum.AlbumTrackSyncFragment"
+        android:label="AlbumTrackSyncFragment" >
+        <argument
+            android:name="albumIdArg"
+            app:argType="integer" />
+        <action
+            android:id="@+id/navigation_track_created_detail"
+            app:destination="@id/navigation_album_detail" />
+    </fragment>
 
 </navigation>

@@ -27,6 +27,8 @@
                 android:layout_width="193dp"
                 android:layout_height="200dp"
                 android:layout_marginBottom="16dp"
+                android:contentDescription="@string/description_collector"
+                tools:ignore="ImageContrastCheck"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -57,7 +59,7 @@
 
             <TextView
                 android:id="@+id/detail_collector_album"
-                android:layout_width="211dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12sp"
                 android:text="@string/collector_favorite_albums"
@@ -87,6 +89,7 @@
                 android:id="@+id/detail_collection_comments_recycled_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/list_comments_collector_label"
                 android:nestedScrollingEnabled="false"
                 tools:itemCount="3"
                 tools:listitem="@layout/collector_comment_list_item" />

@@ -26,6 +26,10 @@ class AlbumViewModel : ViewModel() {
         fetchAlbums()
     }
 
+    fun refreshAlbums() {
+        fetchAlbums()
+    }
+
     @SuppressLint("NullSafeMutableLiveData")
     private fun fetchAlbums() {
         viewModelScope.launch {

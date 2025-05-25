@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentAlbumDetailBinding
+import com.example.vinilos.ui.SharedViewModel
 
 class AlbumDetailFragment : Fragment() {
 
@@ -24,6 +26,8 @@ class AlbumDetailFragment : Fragment() {
     private lateinit var viewModel: AlbumDetailViewModel
     private val args: AlbumDetailFragmentArgs by navArgs()
     private lateinit var trackAdapter: TrackAdapter
+
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +49,36 @@ class AlbumDetailFragment : Fragment() {
         Log.d("AlbumDetailFragment", "onViewCreated for album ID: ${args.albumIdArg}")
 
         viewModel = ViewModelProvider(this).get(AlbumDetailViewModel::class.java)
+
+        sharedViewModel.isGuest.observe(viewLifecycleOwner) { isGuest ->
+            Log.d("AlbumDetailFragment", "isGuest observed: $isGuest")
+            if (isGuest) {
+                Log.d("AlbumDetailFragment", "User is a guest, hiding link album-track button")
+                binding.buttonGoToMatchTrackAlbum.visibility = View.GONE
+            } else {
+                Log.d("AlbumDetailFragment", "User is a collector, showing link album-track button")
+                binding.buttonGoToMatchTrackAlbum.visibility = View.VISIBLE
+            }
+        }
+
+        binding.buttonGoToMatchTrackAlbum.setOnClickListener {
+            if (findNavController().currentDestination?.id == R.id.navigation_album_detail) {
+                Log.d("AlbumDetailFragment", "Navigate to Track Create/Match button clicked for album ID: ${args.albumIdArg}")
+                val action = AlbumDetailFragmentDirections.navigationTrackCreate(albumIdArg = args.albumIdArg)
+                findNavController().navigate(action)
+            } else {
+                Log.w("AlbumDetailFragment", "Navigation to track create aborted: current destination is not AlbumDetailFragment. Current dest: ${findNavController().currentDestination?.label}")
+            }
+        }
+
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("track_created")
+            ?.observe(viewLifecycleOwner) { isAlbumCreated ->
+                if (isAlbumCreated) {
+                    Log.d("AlbumDetailFragment", "Track created, refreshing item")
+                    viewModel.fetchAlbum()
+                    findNavController().currentBackStackEntry?.savedStateHandle?.remove<Boolean>("track_created")
+                }
+            }
 
         setupTrackRecyclerView()
         observeViewModel()

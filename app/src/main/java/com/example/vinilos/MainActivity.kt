@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.navigation_home,
                 R.id.navigation_album_detail,
+                R.id.navigation_artist_detail,
                 R.id.navigation_collector_detail -> {
                     binding.navView.visibility = View.GONE
                 }

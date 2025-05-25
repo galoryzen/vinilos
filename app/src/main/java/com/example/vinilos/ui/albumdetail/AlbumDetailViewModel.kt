@@ -28,6 +28,10 @@ class AlbumDetailViewModel(private val savedStateHandle: SavedStateHandle) : Vie
         fetchAlbumDetails(albumId)
     }
 
+    fun fetchAlbum() {
+        fetchAlbumDetails(albumId)
+    }
+
     private fun fetchAlbumDetails(id: Int) {
         viewModelScope.launch {
             _isLoading.value = true

@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentCollectorBinding
-import com.example.vinilos.ui.collectordetail.CollectorDetailFragmentDirections
 
 class CollectorFragment : Fragment() {
 
@@ -43,12 +42,16 @@ class CollectorFragment : Fragment() {
         Log.d("CollectorFragment", "setupRecyclerView called")
 
         collectorAdapter = CollectorAdapter { collector ->
-            Log.d("CollectorFragment", "Collector clicked: ID=${collector.id}, Name=${collector.name}")
+            if (findNavController().currentDestination?.id == R.id.navigation_collector) {
+                Log.d("CollectorFragment", "Collector clicked: ID=${collector.id}, Name=${collector.name}")
 
-            val action = CollectorFragmentDirections.actiionListToDetail(
-                collectorIdArg = collector.id
-            )
-            findNavController().navigate(action)
+                val action = CollectorFragmentDirections.actionListToDetail(
+                    collectorIdArg = collector.id
+                )
+                findNavController().navigate(action)
+            } else {
+                Log.w("CollectorFragment", "Navigation to collector detail aborted: current destination is not CollectorFragment. Current dest: ${findNavController().currentDestination?.label}")
+            }
         }
 
         binding.collectorsRecyclerView.apply {
